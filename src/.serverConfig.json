@@ -1,0 +1,7 @@
+{
+  "server": "./src/server/server.js",
+  "app": "",
+  "public": "./public",
+  "port": 80,
+  "host": "localhost"
+}
