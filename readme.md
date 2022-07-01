@@ -7,7 +7,7 @@
   ``` js
   const { server } = require('server');
 
-  const handlers = [fn1, fn2, ...];
+  const handlers = [showReq, fileHandler, ..., notFoundHandler];
   server(port, handlers);
   ```
 
@@ -20,5 +20,5 @@
     ['/path', { POST: doNothing, GET: doSomething }]
     ];
 
-  const router = routeRequest(routes); // route handler
+  const subRouter = routeRequest(routes); // route handler
   ```
