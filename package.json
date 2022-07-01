@@ -11,5 +11,13 @@
     "router"
   ],
   "author": "rex-suresh",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rex-suresh/server-http-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rex-suresh/server-http-js/issues"
+  },
+  "homepage": "https://github.com/rex-suresh/server-http-js#readme"
 }

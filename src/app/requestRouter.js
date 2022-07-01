@@ -1,4 +1,4 @@
-const { createRouter } = require('../server/router.js');
+const { createRouter } = require('../core/router.js');
 const { handleMethod } = require('./handleMethod.js');
 
 const routeRequest = (routes) => {

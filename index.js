@@ -1,4 +1,4 @@
-const { startServer } = require('./src/server/server.js');
+const { startServer } = require('./src/core/server.js');
 const { fileHandler } = require('./src/app/handleFiles.js');
 const { invalidMethodHandler } = require('./src/app/invalidMethodHandler.js');
 const { notFoundHandler } = require('./src/app/notFoundHandler.js');
