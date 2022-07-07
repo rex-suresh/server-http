@@ -1,7 +1,7 @@
 let reqCount = 0;
-const showReq = (request, response) => {
+const showReq = (request, response, next) => {
   console.log(request.method, request.url.pathname, ++reqCount);
-  return false;
+  next();
 };
 
 module.exports = {showReq};
