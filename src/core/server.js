@@ -6,10 +6,20 @@ const startServer = (port, handlers) => {
   const router = createRouter(handlers);
   
   const server = createServer((request, response) => {
+    const { method, url } = request;
     const host = request.headers.host;
-    const path = request.url;
-    request.url = new URL(`http://${host}${path}`);
-
+    request.url = new URL(`http://${host}${url}`);
+    
+    if (method === 'POST') {
+      let data = ''
+      request.on('data', (chunk) => data += chunk);
+      request.on('end', () => {
+        request.bodyParams = new URLSearchParams(data);
+        router(request, response);
+      });
+      return;
+    }
+    
     router(request, response);
   });
   
