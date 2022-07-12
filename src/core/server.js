@@ -12,8 +12,15 @@ const startServer = (port, handlers) => {
     
     if (method === 'POST') {
       let data = ''
-      request.on('data', (chunk) => data += chunk);
+      let dataBuffer = [];
+
+      request.on('data', (chunk) => {
+        data += chunk;
+        dataBuffer = dataBuffer.concat(chunk);
+      });
+      
       request.on('end', () => {
+        request.body = Buffer.concat(dataBuffer);
         request.bodyParams = new URLSearchParams(data);
         router(request, response);
       });
