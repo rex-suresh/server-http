@@ -11,7 +11,7 @@
   server(port, handlers);
   ```
 
-  > **routeRequest**
+  > **routeRequest Handler**
   ``` js
   const { routeRequest } = require('server');
 
