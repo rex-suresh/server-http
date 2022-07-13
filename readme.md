@@ -5,10 +5,10 @@
 
   SYNTAX : 
   ``` js
-  const { server } = require('server');
+  const { server, createRouter } = require('server');
 
-  const handlers = [showReq, fileHandler('path', fs), ..., notFoundHandler];
-  server(port, handlers);
+  const router = createRouter(showReq, fileHandler('path', fs), ..., notFoundHandler);
+  server(port, router);
   ```
 
   > **routeRequest Handler**
