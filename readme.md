@@ -7,11 +7,11 @@
   ``` js
   const { server } = require('server');
 
-  const handlers = [showReq, fileHandler, ..., notFoundHandler];
+  const handlers = [showReq, fileHandler('path', fs), ..., notFoundHandler];
   server(port, handlers);
   ```
 
-  > **routeRequest**
+  > **routeRequest Handler**
   ``` js
   const { routeRequest } = require('server');
 
