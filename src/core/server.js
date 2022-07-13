@@ -1,35 +1,7 @@
 const { createServer } = require('http');
-const { URL } = require('url');
-const { createRouter } = require('./asyncRouter.js');
 
-const startServer = (port, handlers) => {
-  const router = createRouter(handlers);
-  
-  const server = createServer((request, response) => {
-    const { method, url } = request;
-    const host = request.headers.host;
-    request.url = new URL(`http://${host}${url}`);
-    
-    if (method === 'POST') {
-      let data = ''
-      let dataBuffer = [];
-
-      request.on('data', (chunk) => {
-        data += chunk;
-        dataBuffer = dataBuffer.concat(chunk);
-      });
-      
-      request.on('end', () => {
-        request.body = Buffer.concat(dataBuffer);
-        request.bodyParams = new URLSearchParams(data);
-        router(request, response);
-      });
-      return;
-    }
-    
-    router(request, response);
-  });
-  
+const startServer = (port, router) => {  
+  const server = createServer(router);
   const onStart = () =>
     console.log(`started server on port ${server.address().port}`);
   server.listen(port, onStart);

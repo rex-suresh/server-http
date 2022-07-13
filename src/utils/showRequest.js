@@ -1,7 +1,7 @@
 let reqCount = 0;
-const showReq = (request, response, next) => {
+const logReq = (request, response, next) => {
   console.log(request.method, request.url.pathname, ++reqCount);
   next();
 };
 
-module.exports = {showReq};
+module.exports = {showReq: logReq, logReq};
